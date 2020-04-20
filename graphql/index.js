@@ -18,7 +18,7 @@ const apollo = new ApolloServer({
   context: req => ({
     isDev: argv('--dev')
   }),
-  introspection: argv('--dev'),
+  introspection: true,
   playground: true,
   debug: argv('--dev'),
   plugins: [responseCachePlugin()]
