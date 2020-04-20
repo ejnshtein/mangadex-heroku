@@ -5,7 +5,8 @@ import Manga from './Manga.js'
 const {
   GraphQLObjectType: ObjectType,
   GraphQLInt: IntType,
-  GraphQLString: StringType
+  GraphQLString: StringType,
+  GraphQLFloat: FloatType
 } = GraphQL
 
 export default new ObjectType({
@@ -23,7 +24,7 @@ export default new ObjectType({
     },
     cover_url: { type: StringType },
     follows: { type: IntType },
-    rating: { type: IntType },
+    rating: { type: FloatType },
     users: { type: IntType }
   }
 })
