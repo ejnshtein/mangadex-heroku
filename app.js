@@ -31,7 +31,9 @@ const host = argv('--no-host')
   ? undefined
   : argv('--host')
     ? getArgv('--host')
-    : undefined
+    : argv('--heroku')
+      ? '0.0.0.0'
+      : undefined
 
 fastify.listen(
   port,
