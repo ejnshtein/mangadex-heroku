@@ -10,6 +10,9 @@
   "keywords": [],
   "type": "module",
   "author": "",
+  "engines": {
+    "node": ">=13.5"
+  },
   "license": "MIT",
   "dependencies": {
     "apollo-datasource": "^0.7.0",
