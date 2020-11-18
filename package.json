@@ -1,11 +1,13 @@
 {
   "name": "mangadex-api-graphql",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "./src/app.js",
   "scripts": {
-    "start": "node app --production --heroku",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ./src --ignore-pattern *.test.*",
+    "lint:fix": "eslint ./src --ignore-pattern *.test.* --fix",
+    "start": "node ./src/app.js --production --heroku",
+    "start:dev": "node ./src/app.js --production --dev"
   },
   "keywords": [],
   "type": "module",
@@ -15,16 +17,20 @@
   },
   "license": "MIT",
   "dependencies": {
-    "apollo-datasource": "^0.7.0",
-    "apollo-server-fastify": "^2.12.0",
-    "apollo-server-plugin-response-cache": "^0.4.1",
+    "apollo-datasource": "^0.7.2",
+    "apollo-server-fastify": "^2.19.0",
+    "apollo-server-plugin-response-cache": "^0.5.6",
     "fastify": "^2.13.1",
     "fastify-sensible": "^2.1.1",
     "fastify-static": "^2.6.0",
-    "graphql": "^15.0.0",
-    "mangadex-api": "^2.0.6"
+    "graphql": "^15.4.0",
+    "lru-cache": "^6.0.0",
+    "mangadex-api": "^4.1.4"
   },
   "devDependencies": {
-    "standard": "^14.3.3"
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2",
+    "standard": "^16.0.2"
   }
 }
