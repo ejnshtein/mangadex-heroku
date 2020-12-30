@@ -1,12 +1,15 @@
 import GraphQL from 'graphql'
-import { Tags } from '../schema/Tags.js'
 import { Tag } from '../schema/Tag.js'
 
-const { GraphQLInt: IntType, GraphQLNonNull: NonNullType } = GraphQL
+const {
+  GraphQLInt: IntType,
+  GraphQLNonNull: NonNullType,
+  GraphQLList: ListType
+} = GraphQL
 
 export const TagMethods = {
   getTags: {
-    type: Tags,
+    type: new ListType(Tag),
     description: 'Get all tags',
     resolve: async (_, query, { dataSources }) => {
       return dataSources.mangadex.getTags(query)

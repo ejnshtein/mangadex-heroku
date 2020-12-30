@@ -1,7 +1,7 @@
 import GraphQL from 'graphql'
 import { Follow } from '../schema/Follow.js'
 import { Home } from '../schema/Home/index.js'
-import { Relations } from '../schema/Relations.js'
+import { Relation } from '../schema/Relation.js'
 
 const { GraphQLList: ListType } = GraphQL
 
@@ -13,7 +13,7 @@ export const MangadexMethods = {
     }
   },
   getRelations: {
-    type: Relations,
+    type: new ListType(Relation),
     resolve: async (_, query, { dataSources }) => {
       return dataSources.mangadex.getRelations(query)
     }

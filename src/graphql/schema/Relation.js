@@ -6,8 +6,8 @@ const {
   GraphQLInt: IntType
 } = GraphQL
 
-export const Tag = new ObjectType({
-  name: 'Tag',
+export const Relation = new ObjectType({
+  name: 'Relation',
   fields: {
     id: { type: IntType },
     name: { type: StringType },
