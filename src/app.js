@@ -1,20 +1,24 @@
 import Fastify from 'fastify'
 import fastifyStatic from 'fastify-static'
-import fastifySensible from 'fastify-sensible'
-import path, { dirname } from 'path'
+import sensible from 'fastify-sensible'
+import cors from 'fastify-cors'
+import path from 'path'
 import { argv, getArgv } from './lib/index.js'
 import { graphql } from './graphql/index.js'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const __dirname = path.dirname(__filename)
 
 const fastify = Fastify({
   logger: argv('--dev')
 })
 
 fastify
-  .register(fastifySensible)
+  .register(sensible)
+  .register(cors, {
+    origin: '*'
+  })
   .get('/', (_request, reply) => {
     reply.redirect('https://github.com/ejnshtein/mangadex-heroku')
   })
@@ -39,8 +43,8 @@ const host = argv('--no-host')
 
 fastify
   .listen(port, host)
-  .then((addres) => {
-    console.log(`Start address - ${addres}`)
+  .then((address) => {
+    console.log(`Start address - ${address}`)
   })
   .catch((err) => {
     console.log(`Startup error: ${err}`)
