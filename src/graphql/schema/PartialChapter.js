@@ -20,6 +20,7 @@ export const PartialChapter = new ObjectType({
     language: { type: StringType },
     mangaId: { type: IntType },
     mangaTitle: { type: StringType },
+    threadId: { type: IntType },
     timestamp: { type: IntType },
     title: { type: StringType },
     uploader: { type: IntType },

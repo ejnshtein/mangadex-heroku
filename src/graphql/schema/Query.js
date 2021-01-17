@@ -1,8 +1,8 @@
-import GraphQL from 'graphql'
-import { MangaMethods } from '../methods/MangaMethods.js'
 import { ChapterMethods } from '../methods/ChapterMethods.js'
+import GraphQL from 'graphql'
 import { GroupMethods } from '../methods/GroupMethods.js'
-import { UserMethods } from '../methods/UserMethods.js'
+import { MangaMethods } from '../methods/MangaMethods.js'
+// import { UserMethods } from '../methods/UserMethods.js'
 import { MangadexMethods } from '../methods/MangadexMethods.js'
 import { TagMethods } from '../methods/TagMethods.js'
 
@@ -14,7 +14,7 @@ export const Query = new ObjectType({
     ...MangaMethods,
     ...ChapterMethods,
     ...GroupMethods,
-    ...UserMethods,
+    // ...UserMethods,
     ...TagMethods,
     ...MangadexMethods
   })

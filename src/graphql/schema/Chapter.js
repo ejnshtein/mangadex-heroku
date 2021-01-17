@@ -1,7 +1,7 @@
 import GraphQL from 'graphql'
-import { client } from '../../client.js'
 import { Manga } from './Manga.js'
 import { PartialGroup } from './PartialGroup.js'
+import { client } from '../../client.js'
 
 const {
   GraphQLObjectType: ObjectType,
@@ -29,10 +29,21 @@ export const Chapter = new ObjectType({
         return client.manga.getManga(chapter.mangaId)
       }
     },
-    pages: { type: new ListType(StringType) },
+    pages: {
+      type: new ListType(StringType),
+      description:
+        "Chapter pages (if status === 'external' there will be single link to the chapter source))",
+      resolve(chapter) {
+        // api can return string instead of list of strings when chapter is not hosted on mangadex
+        return typeof chapter.pages === 'string'
+          ? [chapter.pages]
+          : chapter.pages
+      }
+    },
     server: { type: StringType },
     serverFallback: { type: StringType },
     status: { type: StringType },
+    threadId: { type: IntType },
     timestamp: { type: IntType },
     title: { type: StringType },
     volume: { type: StringType },

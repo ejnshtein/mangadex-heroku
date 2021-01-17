@@ -3,7 +3,8 @@ import GraphQL from 'graphql'
 const {
   GraphQLObjectType: ObjectType,
   GraphQLString: StringType,
-  GraphQLInt: IntType
+  GraphQLInt: IntType,
+  GraphQLBoolean: BooleanType
 } = GraphQL
 
 export const UserManga = new ObjectType({
@@ -12,8 +13,11 @@ export const UserManga = new ObjectType({
     chapter: { type: StringType },
     followType: { type: IntType },
     mangaId: { type: IntType },
+    mangaTitle: { type: StringType },
+    mainCover: { type: StringType },
     rating: { type: IntType },
     userId: { type: IntType },
+    isHentai: { type: BooleanType },
     volume: { type: StringType }
   }
 })
